@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_instance/get_instance.dart';
 import 'package:get/get_navigation/get_navigation.dart';
+import 'package:monumental_habits/Controllers/servicese.dart';
 import 'package:monumental_habits/Utiils/custom_btn.dart';
 import 'package:monumental_habits/Utiils/custom_txtfield.dart';
 import 'package:monumental_habits/Views/Auth/restpassword.dart';
 import 'package:monumental_habits/Views/Auth/signup.dart';
-import 'package:monumental_habits/Views/HomeScreens/tabbar.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class Login_Screen extends StatefulWidget {
@@ -16,9 +17,13 @@ class Login_Screen extends StatefulWidget {
 }
 
 class _Login_ScreenState extends State<Login_Screen> {
-  TextEditingController emailController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
   bool _isLoading = false;
+  LogInController loginController = Get.put(LogInController());
+  // var isLogin = false.obs;
+
+  // TextEditingController emailController = TextEditingController();
+  // TextEditingController passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -142,7 +147,7 @@ class _Login_ScreenState extends State<Login_Screen> {
               endIndent: 10.w,
             ),
             CustomTxtfield(
-              controller: emailController,
+              controller: loginController.emailController,
               icon: Icon(
                 Icons.email_outlined,
                 color: const Color.fromARGB(255, 244, 161, 85),
@@ -155,7 +160,7 @@ class _Login_ScreenState extends State<Login_Screen> {
               height: 1.h,
             ),
             CustomTxtfield(
-              controller: passwordController,
+              controller: loginController.passwordController,
               icon: Icon(
                 Icons.lock_outline,
                 color: const Color.fromARGB(255, 244, 161, 85),
@@ -168,8 +173,14 @@ class _Login_ScreenState extends State<Login_Screen> {
               height: 2.h,
             ),
             CustomButton(
-              onPressed: () {
-                Get.off(BcHome());
+              onPressed: () async {
+                setState(() {
+                  _isLoading = true;
+                });
+                await loginController.signinWithEmail();
+                setState(() {
+                  _isLoading = false;
+                });
               },
               text: "LogIn",
               isLoading: _isLoading,
