@@ -19,17 +19,12 @@ class Login_Screen extends StatefulWidget {
 class _Login_ScreenState extends State<Login_Screen> {
   bool _isLoading = false;
   LogInController loginController = Get.put(LogInController());
-  // var isLogin = false.obs;
-
-  // TextEditingController emailController = TextEditingController();
-  // TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 100.h,
       width: 100.w,
-      // color: Colors.lightBlue,
       child: SingleChildScrollView(
         child: Column(
           children: [

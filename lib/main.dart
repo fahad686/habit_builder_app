@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:monumental_habits/Views/Auth/splash_screen.dart';
+import 'package:monumental_habits/Views/HomeScreens/calendar.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 void main() {
@@ -20,7 +21,8 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: Splash_Screen(),
+        home: CalendarView(),
+        //Splash_Screen(),
       );
     });
   }
