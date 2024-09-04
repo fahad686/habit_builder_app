@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:monumental_habits/Views/Auth/splash_screen.dart';
 import 'package:monumental_habits/Views/HomeScreens/calendar.dart';
@@ -16,11 +17,10 @@ class MyApp extends StatelessWidget {
     return ResponsiveSizer(builder: (context, orientation, screenType) {
       return GetMaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-          useMaterial3: true,
-        ),
+
+        theme: ThemeData.dark(), // yeh default theme hai
+        darkTheme: ThemeData.dark(), // yeh dark theme hai
+        themeMode: ThemeMode.system, // yeh theme mode hai
         home: CalendarView(),
         //Splash_Screen(),
       );
